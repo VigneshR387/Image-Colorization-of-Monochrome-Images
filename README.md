@@ -1,4 +1,4 @@
-# Image Colorization of Monochrome Images
+# Image Colorization with Color Blindness Correction
 
 This project allows users to colorize black-and-white images using a deep learning model and provides color blindness correction features (Deuteranopia, Protanopia, and Tritanopia). The main tool is a Python-based GUI built with Tkinter, and the image colorization is performed using a pre-trained model based on the Siggraph 2017 method.
 
