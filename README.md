@@ -60,9 +60,10 @@ Once the image is processed, the results will be displayed in a matplotlib windo
 
 The processed images will not be saved by default. If you wish to save the output images, you can modify the code to save the images after they are processed.
 
-# License
+# Contributors
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+- **[Vignesh R Nair](https://github.com/VigneshR387)** 
+- **[Ruben Santhosh](https://github.com/RubenSanthosh)** 
 
 # Acknowledgments
 
@@ -76,4 +77,6 @@ If you encounter any issues, please check the following:
 - Ensure that your environment meets all the required dependencies.
 - If you're using a GPU for processing, ensure that CUDA and PyTorch are set up correctly.
 
+# License
 
+This project is licensed under the MIT License - see the LICENSE file for details.
