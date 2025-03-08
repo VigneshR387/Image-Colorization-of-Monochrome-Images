@@ -63,7 +63,7 @@ The processed images will not be saved by default. If you wish to save the outpu
 # Contributors
 
 - **[Vignesh R Nair](https://github.com/VigneshR387)** 
-- **[Ruben Santhosh](https://github.com/RubenSanthosh)** 
+- **[Ruben Santhosh](https://github.com/RubenSantosh11)** 
 
 # Acknowledgments
 
