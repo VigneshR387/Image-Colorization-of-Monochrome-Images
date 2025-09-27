@@ -1,15 +1,16 @@
-# Image Colorization with Color Blindness Correction
+# Image Colorization of Monochrome Images
 
-This project allows users to colorize black-and-white images using a deep learning model and provides color blindness correction features (Deuteranopia, Protanopia, and Tritanopia). The main tool is a Python-based GUI built with Tkinter, and the image colorization is performed using a pre-trained model based on the Siggraph 2017 method.
+This project allows users to automatically colorize black-and-white and grayscale images using a deep learning model based on the Siggraph 2017 method. The main tool is a Python-based GUI built with Tkinter that transforms monochrome images into vibrant, realistic colored versions using advanced neural networks.
 
 ## Features
 
-- **Image Colorization**: Colorize grayscale images using a pre-trained deep learning model.
-- **Color Blindness Correction**: Simulate and correct images for different types of color blindness:
-  - Deuteranopia
-  - Protanopia
-  - Tritanopia
-- **GUI Interface**: A simple Tkinter interface for uploading images and applying the colorization or color blindness correction.
+- **Advanced Image Colorization**: Transform grayscale and black-and-white images into full-color versions using a pre-trained deep learning model.
+- **Monochrome Image Processing**: Supports various formats of monochrome images including historical photographs, sketches, and grayscale images.
+- **GUI Interface**: A user-friendly Tkinter interface for uploading monochrome images and applying colorization.
+- **Additional Color Processing**: Optional color blindness simulation and correction features for accessibility testing:
+  - Deuteranopia simulation/correction
+  - Protanopia simulation/correction
+  - Tritanopia simulation/correction
 
 ## Requirements
 
@@ -23,9 +24,6 @@ Before running the project, ensure that you have the following dependencies inst
 - `matplotlib`
 - `tkinter`
 
-
-# Usage
-
 # Usage
 
 ## 1. Clone the Repository
@@ -33,49 +31,50 @@ Before running the project, ensure that you have the following dependencies inst
 To get started, first clone the repository to your local machine using Git:
 
 ```bash
-git clone https://github.com/your-username/color-blindness-correction.git
+git clone https://github.com/your-username/image-colorization-monochrome.git
 ```
 
-## 1. Run the GUI
+## 2. Run the GUI
 
 You can run the program by executing the following command in your terminal:
 
-
 This will open a GUI window where you can:
 
-- **Upload an image**: Click the "Upload Image" button to choose a black-and-white image for colorization.
-- **Apply Color Blindness Correction**: Select one of the following buttons to apply color blindness correction:
+- **Upload a Monochrome Image**: Click the "Upload Image" button to choose a black-and-white or grayscale image for colorization.
+- **Apply Colorization**: The system will automatically process your monochrome image and generate a colorized version using the Siggraph 2017 deep learning model.
+- **Optional Color Processing**: If needed, you can apply additional color vision accessibility corrections:
   - Deuteranopia Correction
   - Protanopia Correction
   - Tritanopia Correction
 
-Once the image is processed, the results will be displayed in a matplotlib window showing the following images:
+Once the image is processed, the results will be displayed in a matplotlib window showing:
 
-- The original image.
-- The black-and-white input image.
-- The colorized image using the Siggraph 2017 model.
-- The color-blindness-corrected image (if any correction type is selected).
+- The original monochrome input image
+- The AI-generated colorized image
+- Additional processed versions (if color vision corrections are applied)
 
-## 2. Image Output
+## 3. Image Output
 
-The processed images will not be saved by default. If you wish to save the output images, you can modify the code to save the images after they are processed.
+The processed colorized images will be displayed in the interface. If you wish to save the output images, you can modify the code to automatically save the colorized results after processing.
 
 # Contributors
 
 - **[Vignesh R Nair](https://github.com/VigneshR387)** 
-- **[Ruben Santhosh](https://github.com/RubenSantosh11)** 
 
 # Acknowledgments
 
-- The colorization method used in this project is based on the Siggraph 2017 image colorization paper.
+- The image colorization method used in this project is based on the Siggraph 2017 image colorization research paper.
 - Special thanks to the authors and contributors of PyTorch, OpenCV, and other libraries used in this project.
+- Gratitude to the deep learning community for advancing automatic image colorization techniques.
 
 # Troubleshooting
 
 If you encounter any issues, please check the following:
 
 - Ensure that your environment meets all the required dependencies.
+- Verify that your input images are in proper monochrome/grayscale format.
 - If you're using a GPU for processing, ensure that CUDA and PyTorch are set up correctly.
+- For best results, use high-quality monochrome images with clear details and good contrast.
 
 # License
 
