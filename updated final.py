@@ -55,7 +55,7 @@ def colorize_image(img_path, color_blindness_type=None):
     if color_blindness_type:
         plt.subplot(2, 2, 4)
         plt.imshow(img_to_display)
-        plt.title(f'Color Blind Corrected ({color_blindness_type})')
+        plt.title(f'Color Blind Simulated ({color_blindness_type})')
         plt.axis('off')
 
     plt.show()
