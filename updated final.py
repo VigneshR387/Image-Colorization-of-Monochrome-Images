@@ -61,43 +61,53 @@ def colorize_image(img_path, color_blindness_type=None):
     plt.show()
 
 def apply_color_blindness_correction(img, color_blindness_type):
-    if color_blindness_type == 'deuteranopia':
-        return correct_deuteranopia(img)
-    elif color_blindness_type == 'protanopia':
-        return correct_protanopia(img)
-    elif color_blindness_type == 'tritanopia':
-        return correct_tritanopia(img)
+    return daltonize_image(img, color_blindness_type)
 
-def correct_deuteranopia(img):
-    # Example Deuteranopia correction matrix (Brettel 1997 transform matrix)
-    matrix = np.array([[0.625, 0.7, 0],
-                       [0.7,   1.0, 0],
-                       [0,     0,   1.0]])
+def daltonize_image(img, color_blindness_type):
+    simulated = simulate_color_blindness(img, color_blindness_type)
+    error = img.astype(np.float32) - simulated.astype(np.float32)
+    correction_matrix = get_correction_matrix(color_blindness_type)
+    corrected_img = img.astype(np.float32) + np.tensordot(error, correction_matrix.T, axes=([2], [0]))
+    corrected_img = np.clip(corrected_img, 0, 255).astype(np.uint8)
+    return corrected_img
+
+
+def simulate_color_blindness(img, color_blindness_type):
+    # Use simulation matrices to convert img similar to how colorblindness affects vision
+    # These are example matrices (should be double-checked or replaced with correct ones)
+    matrices = {
+        'deuteranopia': np.array([[0.367, 0.861, -0.228],
+                                  [0.280, 0.673, 0.047],
+                                  [-0.012, 0.042, 0.971]]),
+        'protanopia': np.array([[0.152, 1.053, -0.205],
+                               [0.114, 0.786, 0.100],
+                               [-0.003, 0.022, 0.981]]),
+        'tritanopia': np.array([[1.255, -0.076, -0.179],
+                               [-0.078, 0.930, 0.148],
+                               [0.004, 0.691, 0.305]])
+    }
+    matrix = matrices.get(color_blindness_type)
+    if matrix is None:
+        return img
     img_float = img.astype(np.float32) / 255.0
-    corrected = np.tensordot(img_float, matrix.T, axes=([2],[0]))
-    corrected = np.clip(corrected, 0, 1)
-    return (corrected * 255).astype(np.uint8)
+    simulated = np.tensordot(img_float, matrix.T, axes=([2],[0]))
+    simulated = np.clip(simulated, 0, 1) * 255
+    return simulated.astype(np.uint8)
 
-def correct_protanopia(img):
-    # Example Protanopia correction matrix (Brettel 1997)
-    matrix = np.array([[0.567, 0.433, 0],
-                       [0.558, 0.442, 0],
-                       [0,     0.242, 0.758]])
-    img_float = img.astype(np.float32) / 255.0
-    corrected = np.tensordot(img_float, matrix.T, axes=([2],[0]))
-    corrected = np.clip(corrected, 0, 1)
-    return (corrected * 255).astype(np.uint8)
-
-def correct_tritanopia(img):
-    # Example Tritanopia correction matrix (Brettel 1997)
-    matrix = np.array([[1.0,   0,      0],
-                       [0,     0.758,  0.242],
-                       [0,     0.142,  0.858]])
-    img_float = img.astype(np.float32) / 255.0
-    corrected = np.tensordot(img_float, matrix.T, axes=([2],[0]))
-    corrected = np.clip(corrected, 0, 1)
-    return (corrected * 255).astype(np.uint8)
-
+def get_correction_matrix(color_blindness_type):
+    # Example correction matrices from Daltonization literature (may vary by implementation)
+    correction_matrices = {
+        'deuteranopia': np.array([[0, 0, 0],
+                                  [0.7, 1, 0],
+                                  [0.7, 0, 1]]),
+        'protanopia': np.array([[0, 0, 0],
+                                [0.5, 1, 0],
+                                [0.5, 0, 1]]),
+        'tritanopia': np.array([[0, 0, 0],
+                                [0, 0.7, 1],
+                                [0, 0.7, 0]])
+    }
+    return correction_matrices.get(color_blindness_type, np.eye(3))
 
 # Function to handle file upload and colorization for a specific color blindness type
 def upload_and_colorize(color_blindness_type=None):
