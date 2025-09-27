@@ -7,10 +7,7 @@ This project allows users to automatically colorize black-and-white and grayscal
 - **Advanced Image Colorization**: Transform grayscale and black-and-white images into full-color versions using a pre-trained deep learning model.
 - **Monochrome Image Processing**: Supports various formats of monochrome images including historical photographs, sketches, and grayscale images.
 - **GUI Interface**: A user-friendly Tkinter interface for uploading monochrome images and applying colorization.
-- **Additional Color Processing**: Optional color blindness simulation and correction features for accessibility testing:
-  - Deuteranopia simulation/correction
-  - Protanopia simulation/correction
-  - Tritanopia simulation/correction
+
 
 ## Requirements
 
@@ -43,10 +40,7 @@ This will open a GUI window where you can:
 
 - **Upload a Monochrome Image**: Click the "Upload Image" button to choose a black-and-white or grayscale image for colorization.
 - **Apply Colorization**: The system will automatically process your monochrome image and generate a colorized version using the Siggraph 2017 deep learning model.
-- **Optional Color Processing**: If needed, you can apply additional color vision accessibility corrections:
-  - Deuteranopia Correction
-  - Protanopia Correction
-  - Tritanopia Correction
+
 
 Once the image is processed, the results will be displayed in a matplotlib window showing:
 
