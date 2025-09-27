@@ -24,6 +24,7 @@ Before running the project, ensure that you have the following dependencies inst
 - `matplotlib`
 - `tkinter`
 
+
 # Usage
 
 ## 1. Clone the Repository
