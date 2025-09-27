@@ -69,31 +69,35 @@ def apply_color_blindness_correction(img, color_blindness_type):
         return correct_tritanopia(img)
 
 def correct_deuteranopia(img):
-    # Deuteranopia correction logic
-    transformation_matrix = np.array([[1.0, 0.0, 0.0],
-                                      [0.0, 1.0, 0.0],
-                                      [0.0, 0.0, 1.0]])
-    img = img @ transformation_matrix.T
-    img = np.clip(img, 0, 255)
-    return img.astype(np.uint8)
+    # Example Deuteranopia correction matrix (Brettel 1997 transform matrix)
+    matrix = np.array([[0.625, 0.7, 0],
+                       [0.7,   1.0, 0],
+                       [0,     0,   1.0]])
+    img_float = img.astype(np.float32) / 255.0
+    corrected = np.tensordot(img_float, matrix.T, axes=([2],[0]))
+    corrected = np.clip(corrected, 0, 1)
+    return (corrected * 255).astype(np.uint8)
 
 def correct_protanopia(img):
-    # Protanopia correction logic
-    transformation_matrix = np.array([[1.0, 0.0, 0.0],
-                                      [0.0, 1.0, 0.0],
-                                      [0.0, 0.0, 1.0]])
-    img = img @ transformation_matrix.T
-    img = np.clip(img, 0, 255)
-    return img.astype(np.uint8)
+    # Example Protanopia correction matrix (Brettel 1997)
+    matrix = np.array([[0.567, 0.433, 0],
+                       [0.558, 0.442, 0],
+                       [0,     0.242, 0.758]])
+    img_float = img.astype(np.float32) / 255.0
+    corrected = np.tensordot(img_float, matrix.T, axes=([2],[0]))
+    corrected = np.clip(corrected, 0, 1)
+    return (corrected * 255).astype(np.uint8)
 
 def correct_tritanopia(img):
-    # Tritanopia correction logic
-    transformation_matrix = np.array([[1.0, 0.0, 0.0],
-                                      [0.0, 1.0, 0.0],
-                                      [0.0, 0.0, 1.0]])
-    img = img @ transformation_matrix.T
-    img = np.clip(img, 0, 255)
-    return img.astype(np.uint8)
+    # Example Tritanopia correction matrix (Brettel 1997)
+    matrix = np.array([[1.0,   0,      0],
+                       [0,     0.758,  0.242],
+                       [0,     0.142,  0.858]])
+    img_float = img.astype(np.float32) / 255.0
+    corrected = np.tensordot(img_float, matrix.T, axes=([2],[0]))
+    corrected = np.clip(corrected, 0, 1)
+    return (corrected * 255).astype(np.uint8)
+
 
 # Function to handle file upload and colorization for a specific color blindness type
 def upload_and_colorize(color_blindness_type=None):
