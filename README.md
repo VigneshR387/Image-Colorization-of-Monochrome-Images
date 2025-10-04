@@ -2,11 +2,6 @@
 
 This project allows users to automatically colorize black-and-white and grayscale images using a deep learning model based on the Siggraph 2017 method. The main tool is a Python-based GUI built with Tkinter that transforms monochrome images into vibrant, realistic colored versions using advanced neural networks.
 
-## Features
-
-- **Advanced Image Colorization**: Transform grayscale and black-and-white images into full-color versions using a pre-trained deep learning model.
-- **Monochrome Image Processing**: Supports various formats of monochrome images including historical photographs, sketches, and grayscale images.
-- **GUI Interface**: A user-friendly Tkinter interface for uploading monochrome images and applying colorization.
 
 
 ## Requirements
@@ -20,6 +15,7 @@ Before running the project, ensure that you have the following dependencies inst
 - `Pillow`
 - `matplotlib`
 - `tkinter`
+- `scikit-image`
 
 
 # Usage
