@@ -50,7 +50,7 @@ The processed colorized images will be displayed in the interface. If you wish t
 
 # Contributors
 
-- Ruben Santhos()
+- Ruben Santhos
 
 # Acknowledgments
 
