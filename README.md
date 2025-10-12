@@ -1,7 +1,5 @@
 # Image Colorization of Monochrome Images
 
-# Image Colorization of Monochrome Images
-
 This project implements an enhanced image colorization pipeline based on **Richard Zhang et al.'s SIGGRAPH 2017 deep learning colorization method**. My implementation extends the base model with additional OpenCV-based image processing techniques including contrast enhancement through histogram equalization, noise reduction via Gaussian blur, and edge sharpening for improved output quality. The tool features an intuitive Tkinter GUI that allows users to easily colorize black-and-white and grayscale images
 
 
