@@ -9,15 +9,12 @@ import numpy as np
 import torch
 
 
-# Function to colorize the image and display the results
+
 def colorize_image(img_path):
     # Load colorizer
     colorizer_siggraph17 = siggraph17(pretrained=True).eval()
-    use_gpu = torch.cuda.is_available()
-    if use_gpu:
-        colorizer_siggraph17.cuda()
 
-    # Load image using OpenCV
+
     img_cv = cv2.imread(img_path)
     img_cv_rgb = cv2.cvtColor(img_cv, cv2.COLOR_BGR2RGB)
 
@@ -27,28 +24,23 @@ def colorize_image(img_path):
     img_enhanced = cv2.cvtColor(img_yuv, cv2.COLOR_YUV2BGR)
     img_enhanced_rgb = cv2.cvtColor(img_enhanced, cv2.COLOR_BGR2RGB)
 
-    # Resize using OpenCV for preprocessing
+    # Resize
     img_resized = cv2.resize(img_cv_rgb, (256, 256), interpolation=cv2.INTER_LINEAR)
 
-    # Apply Gaussian blur using OpenCV for noise reduction
+    # Gaussian blur
     img_blurred = cv2.GaussianBlur(img_resized, (5, 5), 0)
 
-    # Load and preprocess image using colorizers
+    # Load and preprocess image
     img = load_img(img_path)
     tens_l_orig, tens_l_rs = preprocess_img(img, HW=(256, 256))
-    if use_gpu:
-        tens_l_rs = tens_l_rs.cuda()
 
     # Colorize image
     img_bw = postprocess_tens(tens_l_orig, torch.cat((0 * tens_l_orig, 0 * tens_l_orig), dim=1))
     out_img_siggraph17 = postprocess_tens(tens_l_orig, colorizer_siggraph17(tens_l_rs).cpu())
 
-    # Convert output to numpy array and ensure proper data type
+    # Convert Output to Numpy
     out_img_np = np.array(out_img_siggraph17)
 
-    # Debug: Print the data type and range
-    print(f"Data type: {out_img_np.dtype}")
-    print(f"Min value: {out_img_np.min()}, Max value: {out_img_np.max()}")
 
     # Ensure proper conversion to uint8 in range [0, 255]
     if out_img_np.dtype == np.float32 or out_img_np.dtype == np.float64:
@@ -60,13 +52,13 @@ def colorize_image(img_path):
     elif out_img_np.dtype != np.uint8:
         out_img_np = np.clip(out_img_np, 0, 255).astype(np.uint8)
 
-    # Apply sharpening using OpenCV kernel (for display only)
+
     kernel_sharpen = np.array([[-1, -1, -1],
                                [-1, 9, -1],
                                [-1, -1, -1]])
     out_img_sharpened = cv2.filter2D(out_img_np, -1, kernel_sharpen)
 
-    # Display the results (5 subplots)
+    # Matplot Results : )
     plt.figure(figsize=(15, 8))
 
     plt.subplot(2, 3, 1)
@@ -97,20 +89,20 @@ def colorize_image(img_path):
     plt.tight_layout()
     plt.show()
 
-    # Save the COLORIZED output using OpenCV
+
     base_filename = os.path.splitext(os.path.basename(img_path))[0]
     output_dir = "imgs_out"
 
-    # Create output directory if it doesn't exist
+
     os.makedirs(output_dir, exist_ok=True)
 
-    # Save using the properly converted numpy array
+
     output_path = os.path.join(output_dir, base_filename + '_colorized.jpg')
     cv2.imwrite(output_path, cv2.cvtColor(out_img_np, cv2.COLOR_RGB2BGR))
     print(f"Colorized image saved to: {output_path}")
 
 
-# Function to handle file upload and colorization
+
 def upload_and_colorize():
     file_path = filedialog.askopenfilename()
     if file_path:
