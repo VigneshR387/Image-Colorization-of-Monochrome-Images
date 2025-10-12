@@ -43,7 +43,6 @@ Once the image is processed, the results will be displayed in a matplotlib windo
 
 - The original monochrome input image
 - The AI-generated colorized image
-- Additional processed versions (if color vision corrections are applied)
 
 ## 3. Image Output
 
@@ -51,7 +50,7 @@ The processed colorized images will be displayed in the interface. If you wish t
 
 # Contributors
 
-- **[Vignesh R Nair](https://github.com/VigneshR387)** 
+- Ruben Santhos()
 
 # Acknowledgments
 
