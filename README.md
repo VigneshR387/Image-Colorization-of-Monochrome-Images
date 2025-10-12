@@ -32,6 +32,7 @@ git clone https://github.com/your-username/image-colorization-monochrome.git
 ## 2. Run the GUI
 
 You can run the program by executing the following command in your terminal:
+`python updated\ final.py`
 
 This will open a GUI window where you can:
 
@@ -43,7 +44,6 @@ Once the image is processed, the results will be displayed in a matplotlib windo
 
 - The original monochrome input image
 - The AI-generated colorized image
-- Additional processed versions (if color vision corrections are applied)
 
 ## 3. Image Output
 
@@ -51,7 +51,7 @@ The processed colorized images will be displayed in the interface. If you wish t
 
 # Contributors
 
-- **[Vignesh R Nair](https://github.com/VigneshR387)** 
+- Ruben Santhos
 
 # Acknowledgments
 
@@ -65,7 +65,6 @@ If you encounter any issues, please check the following:
 
 - Ensure that your environment meets all the required dependencies.
 - Verify that your input images are in proper monochrome/grayscale format.
-- If you're using a GPU for processing, ensure that CUDA and PyTorch are set up correctly.
 - For best results, use high-quality monochrome images with clear details and good contrast.
 
 # License
