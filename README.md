@@ -31,7 +31,7 @@ git clone https://github.com/your-username/image-colorization-monochrome.git
 ## 2. Run the GUI
 
 You can run the program by executing the following command in your terminal:
-`python update final.py`
+`python updated\ final.py`
 
 This will open a GUI window where you can:
 
