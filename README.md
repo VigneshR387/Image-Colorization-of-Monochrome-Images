@@ -31,6 +31,7 @@ git clone https://github.com/your-username/image-colorization-monochrome.git
 ## 2. Run the GUI
 
 You can run the program by executing the following command in your terminal:
+`python update final.py`
 
 This will open a GUI window where you can:
 
@@ -64,7 +65,6 @@ If you encounter any issues, please check the following:
 
 - Ensure that your environment meets all the required dependencies.
 - Verify that your input images are in proper monochrome/grayscale format.
-- If you're using a GPU for processing, ensure that CUDA and PyTorch are set up correctly.
 - For best results, use high-quality monochrome images with clear details and good contrast.
 
 # License
