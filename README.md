@@ -1,7 +1,5 @@
 # Image Colorization of Monochrome Images
 
-# Image Colorization of Monochrome Images
-
 This project implements an enhanced image colorization pipeline based on **Richard Zhang et al.'s SIGGRAPH 2017 deep learning colorization method**. My implementation extends the base model with additional OpenCV-based image processing techniques including contrast enhancement through histogram equalization, noise reduction via Gaussian blur, and edge sharpening for improved output quality. The tool features an intuitive Tkinter GUI that allows users to easily colorize black-and-white and grayscale images
 
 
@@ -42,12 +40,15 @@ This will open a GUI window where you can:
 
 Once the image is processed, the results will be displayed in a matplotlib window showing:
 
-- The original monochrome input image
-- The AI-generated colorized image
+- The original image
+- Enhaced (OpenCV)
+- Grayscale Input
+- The colorized image
+- Sharpened (OpenCV)
 
 ## 3. Image Output
 
-The processed colorized images will be displayed in the interface. If you wish to save the output images, you can modify the code to automatically save the colorized results after processing.
+The processed colorized images will be displayed in the interface. Also the Colorized image will be saved in the img_out directory.
 
 # Contributors
 
