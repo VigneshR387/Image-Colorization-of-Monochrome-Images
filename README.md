@@ -52,7 +52,7 @@ The processed colorized images will be displayed in the interface. Also the Colo
 
 # Contributors
 
-- Ruben Santhos
+- Ruben Santhosh
 
 # Acknowledgments
 
